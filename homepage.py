@@ -23,16 +23,42 @@ def create_homepage():
         ['Animation']
     ]
 
-    # Create checkboxes for each genre
-    for row in genres:
-        genre_row = st.empty()  # Use st.empty() to create a placeholder for dynamic updates
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        # Create checkboxes for each genre
+        for row in genres[:3]:
+            genre_row = st.empty()  # Use st.empty() to create a placeholder for dynamic updates
 
-        for genre in row:
-            checkbox_state = genre_row.checkbox(genre, key=f"{genre}_checkbox")
+            for genre in row:
+                checkbox_state = genre_row.checkbox(genre, key=f"{genre}_checkbox")
 
-            # Do something based on checkbox state (e.g., store selected genres in session state)
-            if checkbox_state:
-                st.write(f'Selected {genre}')
+                # Do something based on checkbox state (e.g., store selected genres in session state)
+                if checkbox_state:
+                    st.write(f'Selected {genre}')
+
+    with col2:
+        # Create checkboxes for each genre
+        for row in genres[3:6]:
+            genre_row = st.empty()  # Use st.empty() to create a placeholder for dynamic updates
+
+            for genre in row:
+                checkbox_state = genre_row.checkbox(genre, key=f"{genre}_checkbox")
+
+                # Do something based on checkbox state (e.g., store selected genres in session state)
+                if checkbox_state:
+                    st.write(f'Selected {genre}')
+
+    with col3:
+        # Create checkboxes for each genre
+        for row in genres[6:10]:
+            genre_row = st.empty()  # Use st.empty() to create a placeholder for dynamic updates
+
+            for genre in row:
+                checkbox_state = genre_row.checkbox(genre, key=f"{genre}_checkbox")
+
+                # Do something based on checkbox state (e.g., store selected genres in session state)
+                if checkbox_state:
+                    st.write(f'Selected {genre}')
 
     # Add a "Search" button
     if st.button('Search', key='search_button'):
