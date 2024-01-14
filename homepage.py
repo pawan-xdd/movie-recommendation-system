@@ -4,6 +4,14 @@ import streamlit as st
 
 
 def create_homepage():
+    emptycol, buttonlogout = st.columns([4.5, 1.25])
+    with buttonlogout:
+        # Add a logout button
+        if st.button('Logout'):
+            # Reset session state and redirect to the login page
+            st.experimental_set_query_params(logged_in=False)
+            st.experimental_set_query_params(logged_in=False)
+
     st.image('https://www.dualmonitorbackgrounds.com/albums/JCSK/ecosia_.png',
              caption='Movie Recommendation System',
              use_column_width=True)
@@ -64,14 +72,6 @@ def create_homepage():
     if st.button('Search', key='search_button'):
         selected_genres = [genre[0] for genre in genres if st.session_state.get(f"{genre[0]}_checkbox")]
         st.write(f'Searching for movies in genres: {", ".join(selected_genres)}')
-    else:
-        st.warning("Please select at least one genre!")
-
-        # Add a logout button
-    if st.button('Logout'):
-        # Reset session state and redirect to the login page
-        st.experimental_set_query_params(logged_in=False)
-        st.experimental_set_query_params(logged_in=False)
 
         # Optional: You can use st.experimental_rerun to trigger a re-run of the app to update the UI
         st.experimental_rerun()
